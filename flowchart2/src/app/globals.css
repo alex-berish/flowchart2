@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --accent: #2563eb;
+  --muted: color-mix(in srgb, var(--foreground) 60%, var(--background));
+  --deck-title: 2.5rem;
+  --deck-heading: 3.25rem;
+  --deck-subhead: 1.9rem;
+  --deck-body: 1.2rem;
+  --deck-caption: 1rem;
+  --deck-footnote: 0.25rem;
+  --deck-eyebrow: 0.75rem;
+  --deck-kicker: 1.125rem;
+  --deck-label: 0.9rem;
+  --deck-button: 1rem;
+  --deck-line-tight: 1.05;
+  --deck-line-snug: 1.3;
+  --deck-line-regular: 1.6;
+}
+
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --muted: color-mix(in srgb, var(--foreground) 55%, transparent);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-deck-sans);
+  --font-mono: var(--font-deck-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    var(--font-deck-sans), "Plus Jakarta Sans", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: var(--deck-line-regular);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
