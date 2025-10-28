@@ -49,7 +49,7 @@ export function DeckSelectionView() {
 
         <h1 className="text-4xl font-semibold tracking-tight">Chatobserver x Clean Digital</h1>
         <p className="text-base text-[color-mix(in srgb, var(--foreground) 78%, transparent)] max-w-2xl mx-auto md:mx-0">
-          Start with the Clean Digital x Chatobserver deck to anchor the partnership story, then continue with trustee, board, and employee perspectives.
+          Start with the Proposal Overview deck to anchor the idea, then continue with EOT, board, and employee decks. Note that everything is a proposal subject to discussion and refinement.
         </p>
       </header>
 
