@@ -1,0 +1,56 @@
+import { ProfitDistributionComparisonChart } from "@/components/slides/orientation/profit-distribution-comparison-chart";
+
+<SlideHeader align="center">
+  In Summary
+</SlideHeader>
+
+<SlideSubhead>
+  <p>
+    Keeping Clean Digital as channel owner guarantees £1k+ MRR, but the cap clips breakout months. Removing it restores the same baseline while reintroducing rare heavy-tail upside.
+  </p>
+</SlideSubhead>
+
+<div className="w-full flex flex-col gap-6">
+  <div className="flex flex-col gap-2 text-left">
+    <h3
+      className="font-semibold text-[var(--foreground)]"
+      style={{
+        fontSize: "var(--deck-subhead, 1.9rem)",
+        lineHeight: "var(--deck-line-snug, 1.3)",
+      }}
+    >
+      Capped vs. Uncapped Profit Outcomes
+    </h3>
+    <p
+      className="text-[color-mix(in srgb, var(--foreground) 75%, transparent)]"
+      style={{
+        fontSize: "var(--deck-caption, 1rem)",
+        lineHeight: "var(--deck-line-regular, 1.6)",
+      }}
+    >
+      Both retain the baseline, only the uncapped scenario keeps the right-tail jackpots
+    </p>
+  </div>
+
+  <div className="w-full h-[420px]">
+    <ProfitDistributionComparisonChart />
+  </div>
+
+  <p
+    className="uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 60%, transparent)]"
+    style={{
+      fontSize: "var(--deck-footnote, 0.75rem)",
+      lineHeight: "var(--deck-line-snug, 1.3)",
+    }}
+  >
+    Conceptual probability density; axis clipped at £120k—uncapped tail continues beyond the frame.
+  </p>
+</div>
+
+<SlideBody className="max-w-4xl">
+  <BulletList className="space-y-4">
+    <li>Baseline value is identical in both cases—Clean Digital still clears £1k MRR even in conservative outcomes.</li>
+    <li>CD Scenario keeps volatility tight but flattens the right tail at £30k MRR, erasing breakout months.</li>
+    <li>NewCo Scenario mirrors day-to-day performance while keeping seven-figure spikes on the table.</li>
+  </BulletList>
+</SlideBody>

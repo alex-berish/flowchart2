@@ -1,9 +1,218 @@
+import { serialize } from "next-mdx-remote/serialize";
+
+import { loadSlide } from "@/lib/mdx";
+
 import type { DeckSlide } from "../types";
 
-import { getSlide01 } from "./slide-01";
-import { getSlide02 } from "./slide-02";
-import { getSlide03 } from "./slide-03";
+type SlideManifestEntry = {
+  id: string;
+  label: string;
+  file: string;
+  notes?: string;
+};
 
-export async function getDeckSlides(): Promise<DeckSlide[]> {
-  return Promise.all([getSlide01(), getSlide02(), getSlide03()]);
+type DeckDefinition = {
+  slides: SlideManifestEntry[];
+};
+
+export const DECK_IDS = ["orientation", "eot", "board"] as const;
+
+export type DeckId = (typeof DECK_IDS)[number];
+
+const DECKS: Record<DeckId, DeckDefinition> = {
+  orientation: {
+    slides: [
+      { id: "slide-01", label: "Cover", file: "slide-01.mdx", notes: "" },
+      {
+        id: "slide-02",
+        label: "Partnership Snapshot",
+        file: "slide-02.mdx",
+        notes:
+          "Operator/channel/economics summary—CD captures 100% profit on its cohort.",
+      },
+      {
+        id: "slide-03",
+        label: "Provenance & Rationale",
+        file: "slide-03.mdx",
+        notes:
+          "CD retains perpetual profit and provides initial working capital.",
+      },
+      {
+        id: "slide-04",
+        label: "Governance & Conflicts",
+        file: "slide-04.mdx",
+        notes:
+          "I will recuse from EOT discussions on chatobserver (disclosure, recusal, arm's-length treatment)",
+      },
+      {
+        id: "slide-05",
+        label: "Parties & Boundaries",
+        file: "slide-05.mdx",
+        notes: "Clarify operator vs channel, staffing, and firewall expectations.",
+      },
+      {
+        id: "slide-06",
+        label: "Core Economics",
+        file: "slide-06.mdx",
+        notes: "Define profit formula and zero margin retained by NewCo.",
+      },
+      {
+        id: "slide-07",
+        label: "Scope & Pricing",
+        file: "slide-07.mdx",
+        notes:
+          "These terms can be reworked obviously, but we can start with this",
+      },
+      {
+        id: "slide-08",
+        label: "Reporting & Audit",
+        file: "slide-08.mdx",
+        notes: "Monthly statement + audit right keeps trustees informed.",
+      },
+      {
+        id: "slide-09",
+        label: "Why Now",
+        file: "slide-09.mdx",
+        notes:
+          "GEO/AEO momentum is rising and we need to operate with sense of urgency. This necessitates a streamlined structure that minimises friction and complexity and insulates CD from product risk.",
+      },
+      {
+        id: "slide-11",
+        label: "Funding Momentum",
+        file: "slide-11.mdx",
+        notes:
+          "Use competitor raises to highlight fresh, investable category.",
+      },
+      {
+        id: "slide-12",
+        label: "Financial Example",
+        file: "slide-13.mdx",
+        notes: "Walk through £500/month account economics for CD.",
+      },
+      {
+        id: "slide-13",
+        label: "Papering Checklist",
+        file: "slide-14.mdx",
+        notes: "Assignment, channel letter, firewall, outside-hours, conflicts.",
+      },
+      {
+        id: "slide-14",
+        label: "Decision & Next Steps",
+        file: "slide-15.mdx",
+        notes:
+          "Approve, instruct counsel, launch attribution capture, start pilot.",
+      },
+      {
+        id: "slide-15",
+        label: "In Summary",
+        file: "slide-16.mdx",
+        notes:
+          "Compare capped £30k MRR outcomes with uncapped heavy-tail upside; reinforce baseline £1k guarantee.",
+      },
+    ],
+  },
+  eot: {
+    slides: [
+      {
+        id: "slide-01",
+        label: "EOT Perspective",
+        file: "slide-01.mdx",
+        notes: "",
+      },
+      {
+        id: "slide-02",
+        label: "EOT Benefit Test",
+        file: "slide-02.mdx",
+        notes:
+          "Emphasise predictable cash, limited risk, preserved PPC focus, and credible upside.",
+      },
+      {
+        id: "slide-03",
+        label: "Operating Model Fit",
+        file: "slide-03.mdx",
+        notes:
+          "Highlight founder-led execution plus channel economics as the best-fit structure.",
+      },
+      {
+        id: "slide-04",
+        label: "Safeguards & Boundaries",
+        file: "slide-04.mdx",
+        notes:
+          "Underline the brand firewall, outside-hours commitment, and light but regular reporting.",
+      },
+      {
+        id: "slide-05",
+        label: "Trustee Resolution",
+        file: "slide-05.mdx",
+        notes:
+          "Walk through approve/direct/review wording and tie back to benefit-first logic.",
+      },
+    ],
+  },
+  board: {
+    slides: [
+      {
+        id: "slide-01",
+        label: "Board Mandate",
+        file: "slide-01.mdx",
+        notes:
+          "Open on the board's mandate: protect PPC, add profit stream, and keep product risk away from the agency.",
+      },
+      {
+        id: "slide-02",
+        label: "Business Model",
+        file: "slide-02.mdx",
+        notes:
+          "Underline perpetual profit share, NewCo pricing control with a floor, and the attribution rules.",
+      },
+      {
+        id: "slide-03",
+        label: "Risk & Brand",
+        file: "slide-03.mdx",
+        notes:
+          "Stress MoR = NewCo, brand firewall, outside-hours posture, and zero staff allocation.",
+      },
+      {
+        id: "slide-04",
+        label: "Cashflow & Governance",
+        file: "slide-04.mdx",
+        notes:
+          "Highlight monthly remittance, reporting cadence, audit right, and quarterly decision gates.",
+      },
+      {
+        id: "slide-05",
+        label: "Board Actions",
+        file: "slide-05.mdx",
+        notes:
+          "Walk through approve/execute/review phrasing—align with a 10-day close and 30-day check-in.",
+      },
+    ],
+  },
+};
+
+export function listDeckIds(): DeckId[] {
+  return [...DECK_IDS];
+}
+
+export async function getDeckSlides(deck: DeckId = "orientation"): Promise<
+  DeckSlide[]
+> {
+  const definition = DECKS[deck];
+  if (!definition) {
+    throw new Error(`Deck not found: ${deck}`);
+  }
+
+  return Promise.all(
+    definition.slides.map(async ({ id, label, file, notes }) => {
+      const raw = await loadSlide(deck, file);
+      const source = await serialize(raw);
+
+      return {
+        id,
+        label,
+        source,
+        notes,
+      };
+    }),
+  );
 }

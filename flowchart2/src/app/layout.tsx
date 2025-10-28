@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import "./globals.css";
-
-const deckSans = Plus_Jakarta_Sans({
-  variable: "--font-deck-sans",
-  subsets: ["latin"],
-});
-
-const deckMono = JetBrains_Mono({
-  variable: "--font-deck-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="light">
-      <body className={`${deckSans.variable} ${deckMono.variable} antialiased`}>
+      <body className="antialiased">
         <ThemeProvider>
           <div className="fixed top-4 right-4 z-50">
             <ThemeToggle />

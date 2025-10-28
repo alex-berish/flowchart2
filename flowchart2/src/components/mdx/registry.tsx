@@ -1,9 +1,11 @@
-import type { ComponentProps, CSSProperties, ReactNode } from "react";
+import type { ComponentProps, CSSProperties, ReactElement, ReactNode } from "react";
 import { Children, cloneElement, isValidElement } from "react";
 
 import { LogoImage } from "@/components/media/logo-image";
+import { FundingMomentumChart } from "@/components/slides/orientation/funding-momentum-chart";
+import { ProfitDistributionComparisonChart } from "@/components/slides/orientation/profit-distribution-comparison-chart";
 
-import { BarChartBlock } from "./chart-blocks";
+import { BarChartBlock, LineChartBlock } from "./chart-blocks";
 import { ChartFrame } from "./chart-frame";
 import { cx } from "./utils";
 
@@ -92,13 +94,16 @@ export function SlideHeader({
         lineHeight: lineHeights.tight,
       };
 
-      return cloneElement(child, {
-        className: cx(
-          "block text-[length:var(--deck-title,7rem)] leading-[var(--deck-line-tight,1.05)]",
-          existingClass,
-        ),
-        style: mergedStyle,
-      });
+      return cloneElement(
+        child as ReactElement,
+        {
+          className: cx(
+            "block text-[length:var(--deck-title,7rem)] leading-[var(--deck-line-tight,1.05)]",
+            existingClass,
+          ),
+          style: mergedStyle,
+        } as Record<string, unknown>,
+      );
     }
 
     return child;
@@ -167,7 +172,7 @@ export function SlideBody({ className, children, ...rest }: SlideBodyProps) {
   return (
     <div
       className={cx(
-        "flex flex-col gap-4 text-[color-mix(in srgb, var(--foreground) 90%, transparent)]",
+        "flex flex-col items-start gap-4 text-left text-[color-mix(in srgb, var(--foreground) 90%, transparent)]",
         className,
       )}
       style={{
@@ -185,7 +190,7 @@ export function BulletList({ className, children, ...rest }: BulletListProps) {
   return (
     <ul
       className={cx(
-        "list-disc list-inside space-y-2 text-[color-mix(in srgb, var(--foreground) 88%, transparent)]",
+        "list-disc list-outside pl-6 space-y-2 text-left text-[color-mix(in srgb, var(--foreground) 88%, transparent)]",
         className,
       )}
       style={{
@@ -357,7 +362,7 @@ const List = ({
 }: WithClassName<ComponentProps<"ul">>) => (
   <ul
     className={cx(
-      "list-disc list-inside space-y-2 text-[color-mix(in srgb, var(--foreground) 88%, transparent)]",
+      "list-disc list-outside pl-6 space-y-2 text-left text-[color-mix(in srgb, var(--foreground) 88%, transparent)]",
       className,
     )}
     style={{
@@ -376,7 +381,7 @@ const ListItem = ({
   ...rest
 }: WithClassName<ComponentProps<"li">>) => (
   <li
-    className={cx("pl-2", className)}
+    className={cx("pl-1", className)}
     style={{
       fontSize: typeScale.body,
       lineHeight: lineHeights.regular,
@@ -395,6 +400,9 @@ export const defaultMDXComponents = {
   li: ListItem,
   ChartFrame,
   BarChartBlock,
+  LineChartBlock,
+  FundingMomentumChart,
+  ProfitDistributionComparisonChart,
   LogoImage,
   SlideHeader,
   SlideSubhead,

@@ -1,0 +1,46 @@
+<div className="flex h-full w-full flex-col">
+  <div className="flex flex-1 flex-col gap-10 px-8 py-6 w-full max-w-4xl mx-auto">
+    <SlideHeader eyebrow="Business Model">
+      Business Model Overview
+    </SlideHeader>
+
+    <SlideBody className="grid gap-8 text-left">
+      <div className="flex flex-col gap-3">
+        <p className="text-sm uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 65%, transparent)]">
+          Structure
+        </p>
+        <BulletList className="space-y-3">
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">Operator:</span> Alex&apos;s NewCo runs ChatObserver (build, infrastructure, support, security).
+          </li>
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">Channel:</span> CD serves CD-sourced customers only.
+          </li>
+          <li>
+            CD keeps <span className="font-semibold text-[var(--foreground)]">100% of profit forever</span> on CD-sourced accounts.
+          </li>
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">Profit = cash collected − direct attributable platform costs − payment fees/taxes − customer credits.</span>
+          </li>
+          <li>
+            Pricing control stays with NewCo; a <span className="font-semibold text-[var(--foreground)]">price-floor prevents undercutting</span>.
+          </li>
+        </BulletList>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <p className="text-sm uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 65%, transparent)]">
+          Attribution
+        </p>
+        <BulletList className="space-y-3">
+          <li>
+            A CD-sourced customer is: (i) a current CD client at first contact, (ii) introduced by CD (email intro or referral link), or (iii) signed via a CD-owned landing page.
+          </li>
+          <li>
+            Attribution lasts for the <span className="font-semibold text-[var(--foreground)]">life of that account</span> and resets only after <span className="font-semibold text-[var(--foreground)]">&gt;180 days</span> of full churn.
+          </li>
+        </BulletList>
+      </div>
+    </SlideBody>
+  </div>
+</div>

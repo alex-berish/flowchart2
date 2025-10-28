@@ -1,0 +1,41 @@
+<div className="flex h-full w-full flex-col">
+  <div className="flex flex-1 flex-col gap-10 px-8 py-6 w-full max-w-4xl mx-auto">
+    <SlideHeader eyebrow="Board Actions" kicker="Next steps">
+      Board Actions
+    </SlideHeader>
+
+    <SlideBody className="grid gap-8 text-left">
+      <div className="flex flex-col gap-3">
+        <p className="text-sm uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 65%, transparent)]">
+          Approve in principle:
+        </p>
+        <BulletList className="space-y-3">
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">Perpetual channel:</span> CD keeps 100% of profit on CD-sourced customers.
+          </li>
+          <li>
+            Alex&apos;s NewCo operates outside CD (MoR = NewCo).
+          </li>
+          <li>Deed of Assignment of the recipe to NewCo.</li>
+          <li>Operator-risk letter (MoR = NewCo; NewCo is data controller).</li>
+          <li>Brand-firewall letter.</li>
+          <li>Outside-hours (or daytime override) letter.</li>
+          <li>
+            Perpetual Channel Agreement (profit formula, attribution rules, price-floor, reporting, audit).
+          </li>
+        </BulletList>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <p className="text-sm uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 65%, transparent)]">
+          Review (in 30 days)
+        </p>
+        <BulletList className="space-y-3">
+          <li>
+            Confirm documents executed, monthly statement template in use, and first CD-sourced prospects queued.
+          </li>
+        </BulletList>
+      </div>
+    </SlideBody>
+  </div>
+</div>

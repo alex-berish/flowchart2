@@ -25,6 +25,10 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
   const [referenceOpen, setReferenceOpen] = useState(false);
   const total = slides.length;
   const activeSlide = useMemo(() => slides[index], [slides, index]);
+  const defaultNotes =
+    "Keep this drawer ready for quick definitions, facilitation cues, or follow-up actions. The copy can flex per slide without crowding the main canvas.";
+  const slideNotes = activeSlide.notes ?? defaultNotes;
+
   const goPrevious = () => setIndex((value) => Math.max(0, value - 1));
   const goNext = () => setIndex((value) => Math.min(total - 1, value + 1));
   const toggleReference = () => setReferenceOpen((value) => !value);
@@ -36,8 +40,27 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
     <div className="min-h-screen w-full bg-[var(--background)] text-[var(--foreground)] flex flex-col items-center px-6 py-10 gap-8">
       <header className="w-full max-w-screen-xl flex flex-wrap items-end justify-between gap-4">
         <div className="flex flex-col gap-1">
+          <span
+            className="uppercase tracking-[0.3em] text-[color-mix(in srgb, var(--accent) 40%, white)]"
+            style={{
+              fontSize: "var(--deck-eyebrow, 0.75rem)",
+              lineHeight: "var(--deck-line-snug, 1.3)",
+            }}
+          >
+            Deck Viewer
+          </span>
         </div>
         <div className="flex items-center gap-3">
+          <Link
+            href="/decks"
+            className="rounded-full border border-[color-mix(in srgb, var(--foreground) 12%, transparent)] px-4 py-2 font-medium text-[color-mix(in srgb, var(--foreground) 80%, transparent)] hover:bg-[color-mix(in srgb, var(--accent) 10%, transparent)] transition"
+            style={{
+              fontSize: "var(--deck-label, 0.9rem)",
+              lineHeight: "var(--deck-line-snug, 1.3)",
+            }}
+          >
+            ← Back to decks
+          </Link>
           <button
             type="button"
             onClick={toggleReference}
@@ -95,11 +118,7 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
           >
             Facilitation notes
           </p>
-          <p>
-            Keep this drawer ready for quick definitions, facilitation cues, or
-            follow-up actions. The copy can flex per slide without crowding the
-            main canvas.
-          </p>
+          <p className="whitespace-pre-line">{slideNotes}</p>
         </aside>
       </div>
 
@@ -120,15 +139,11 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
           >
             Facilitation notes
           </p>
-          <p className="mt-3">
-            Keep this drawer ready for quick definitions, facilitation cues, or
-            follow-up actions. The copy can flex per slide without crowding the
-            main canvas.
-          </p>
+          <p className="mt-3 whitespace-pre-line">{slideNotes}</p>
         </div>
       ) : null}
 
-      <nav className="w-full max-w-screen-xl flex flex-wrap items-center justify-between gap-4">
+      <nav className="w-full max-w-screen-xl flex flex-wrap items-center justify-center gap-4">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -140,7 +155,7 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
               lineHeight: "var(--deck-line-snug, 1.3)",
             }}
           >
-            Back
+            Previous
           </button>
           {!isLast ? (
             <button
@@ -154,18 +169,7 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
             >
               Next
             </button>
-          ) : (
-            <Link
-              href="/quiz"
-              className="rounded-full bg-[var(--accent)] text-white px-6 py-2 font-medium transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-              style={{
-                fontSize: "var(--deck-button, 1rem)",
-                lineHeight: "var(--deck-line-snug, 1.3)",
-              }}
-            >
-              Continue
-            </Link>
-          )}
+          ) : null}
         </div>
       </nav>
     </div>

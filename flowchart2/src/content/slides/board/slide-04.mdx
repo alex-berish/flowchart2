@@ -1,0 +1,37 @@
+<div className="flex h-full w-full flex-col">
+  <div className="flex flex-1 flex-col gap-10 px-8 py-6 w-full max-w-4xl mx-auto">
+    <SlideHeader eyebrow="Governance" kicker="Cashflow, reporting, oversight">
+      Cashflow, Reporting &amp; Governance
+    </SlideHeader>
+
+    <SlideBody className="grid gap-8 text-left">
+      <div className="flex flex-col gap-3">
+        <p className="text-sm uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 65%, transparent)]">
+          Cashflow
+        </p>
+        <BulletList className="space-y-3">
+          <li>
+            CD receives <span className="font-semibold text-[var(--foreground)]">monthly remittance = 100% profit</span> from CD-sourced accounts (per formula).
+          </li>
+          <li>
+            Optional add-ons (pro services/bespoke) can be excluded or charged separately (board to decide).
+          </li>
+        </BulletList>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <p className="text-sm uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 65%, transparent)]">
+          Reporting &amp; audit
+        </p>
+        <BulletList className="space-y-3">
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">Customer-level statement:</span> revenue collected, direct costs, fees/taxes, resulting profit to CD.
+          </li>
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">Quarterly channel review:</span> pipeline, activations, churn, net profit to CD.
+          </li>
+        </BulletList>
+      </div>
+    </SlideBody>
+  </div>
+</div>

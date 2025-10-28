@@ -7,4 +7,5 @@ export type DeckSlide = {
   label: string;
   source: MDXRemoteSerializeResult;
   components?: MDXComponentMap;
+  notes?: string;
 };

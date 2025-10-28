@@ -1,6 +1,6 @@
 # Slide Authoring Guide
 
-This guide summarizes the MDX components available when building deck slides.
+This guide summarizes the MDX components available when building deck slides. The Clean Digital x Chatobserver deck content lives in `src/content/slides/orientation`, and future decks can introduce their own subdirectories under `src/content/slides`.
 
 ## Core headings & copy
 

@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts";
 
-import { chartPalette } from "./utils";
+import { chartPalette, defaultNumberFormatter } from "./utils";
 
 const barData = [
   { label: "Option A", value: 10 },
@@ -35,7 +35,7 @@ export function BarChartExample() {
               stroke={chartPalette.mutedAxis}
               fontSize={12}
               tickLine={false}
-              tickFormatter={formatValue}
+              tickFormatter={defaultNumberFormatter}
             />
             <Tooltip
               cursor={{ fill: "rgba(37, 99, 235, 0.1)" }}
