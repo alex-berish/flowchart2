@@ -127,7 +127,7 @@ export function FundingMomentumChart() {
 
   return (
     <div className="relative h-full w-full self-stretch">
-      <div className="absolute right-3 top-3 z-10 flex items-center gap-2 rounded-xl bg-[color-mix(in srgb, white 85%, var(--background))] px-3 py-2 text-sm font-medium text-[color-mix(in srgb, var(--foreground) 80%, transparent)] shadow-sm">
+      <div className="absolute right-3 top-3 md:top-16 z-10 flex items-center gap-2 rounded-xl bg-[color-mix(in srgb, white 85%, var(--background))] px-3 py-2 text-sm font-medium text-[color-mix(in srgb, var(--foreground) 80%, transparent)] shadow-sm">
         <label className="flex items-center gap-2">
           <input
             aria-label="Exclude US companies"

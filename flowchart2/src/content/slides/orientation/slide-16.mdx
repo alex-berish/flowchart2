@@ -1,21 +1,10 @@
 import { ProfitDistributionComparisonChart } from "@/components/slides/orientation/profit-distribution-comparison-chart";
 
 <SlideHeader align="center">
-  In Summary
+  MRR Probability Distribution
 </SlideHeader>
 
 <div className="w-full flex flex-col gap-6">
-  <div className="flex flex-col gap-2 text-left">
-    <p
-      className="text-[color-mix(in srgb, var(--foreground) 75%, transparent)]"
-      style={{
-        fontSize: "var(--deck-caption, 1rem)",
-        lineHeight: "var(--deck-line-regular, 1.6)",
-      }}
-    >
-      Both retain the baseline, but only the NewCo scenario retains the right-tail jackpot scenarios
-    </p>
-  </div>
 
   <div className="w-full h-[420px]">
     <ProfitDistributionComparisonChart />
@@ -25,7 +14,7 @@ import { ProfitDistributionComparisonChart } from "@/components/slides/orientati
 
 <SlideBody className="max-w-4xl">
   <BulletList className="space-y-4">
-    <li>Baseline value is identical in both cases—Clean Digital still clears the same MRR in both scenarios but MRR is capped in CD Scenario.</li>
+    <li>Baseline value is identical in both cases—Clean Digital still clears the same MRR in both scenarios but MRR is capped in CD Scenario - ONLY the NewCo scenario retains "jackpot"-like outcomes</li>
     <li>NewCo Scenario enables outside investment-CD can also participate in this-and so MRR is uncapped.</li>
   </BulletList>
 </SlideBody>
