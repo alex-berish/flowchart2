@@ -22,16 +22,11 @@ const SLIDE_HEIGHT = 720;
 
 export function DeckNavigator({ slides }: DeckNavigatorProps) {
   const [index, setIndex] = useState(0);
-  const [referenceOpen, setReferenceOpen] = useState(false);
   const total = slides.length;
   const activeSlide = useMemo(() => slides[index], [slides, index]);
-  const defaultNotes =
-    "Keep this drawer ready for quick definitions, facilitation cues, or follow-up actions. The copy can flex per slide without crowding the main canvas.";
-  const slideNotes = activeSlide.notes ?? defaultNotes;
 
   const goPrevious = () => setIndex((value) => Math.max(0, value - 1));
   const goNext = () => setIndex((value) => Math.min(total - 1, value + 1));
-  const toggleReference = () => setReferenceOpen((value) => !value);
 
   const isFirst = index === 0;
   const isLast = index === total - 1;
@@ -61,18 +56,6 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
           >
             ← Back to decks
           </Link>
-          <button
-            type="button"
-            onClick={toggleReference}
-            aria-expanded={referenceOpen}
-            className="min-w-[120px] rounded-full border border-[color-mix(in srgb, var(--foreground) 15%, transparent)] px-4 py-2 font-semibold uppercase tracking-[0.2em] hover:bg-[color-mix(in srgb, var(--accent) 12%, transparent)] transition"
-            style={{
-              fontSize: "var(--deck-label, 0.9rem)",
-              lineHeight: "var(--deck-line-snug, 1.3)",
-            }}
-          >
-            {referenceOpen ? "Hide notes" : "Show notes"}
-          </button>
         </div>
       </header>
 
@@ -81,7 +64,6 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
           className="relative flex items-center justify-center border border-[color-mix(in srgb, var(--foreground) 6%, transparent)] rounded-[24px] shadow-lg bg-[color-mix(in srgb, white 94%, var(--background))] overflow-hidden transition-[padding] duration-200 ease-out"
           style={{
             height: `min(85vh, ${SLIDE_HEIGHT}px)`,
-            paddingRight: referenceOpen ? 280 : 0,
           }}
           aria-live="polite"
         >
@@ -100,48 +82,7 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
             </div>
           </div>
         </section>
-
-        <aside
-          aria-hidden={!referenceOpen}
-          className={`hidden md:flex flex-col gap-3 absolute top-6 right-6 w-[240px] rounded-[20px] border border-dashed border-[color-mix(in srgb, var(--foreground) 18%, transparent)] bg-[color-mix(in srgb, white 94%, var(--background))] px-5 py-6 text-left text-[color-mix(in srgb, var(--foreground) 75%, transparent)] transition-[opacity,transform] duration-200 ease-out ${referenceOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 pointer-events-none"}`}
-          style={{
-            fontSize: "var(--deck-caption, 1rem)",
-            lineHeight: "var(--deck-line-regular, 1.6)",
-          }}
-        >
-          <p
-            className="uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 70%, transparent)]"
-            style={{
-              fontSize: "var(--deck-eyebrow, 0.75rem)",
-              lineHeight: "var(--deck-line-snug, 1.3)",
-            }}
-          >
-            Facilitation notes
-          </p>
-          <p className="whitespace-pre-line">{slideNotes}</p>
-        </aside>
       </div>
-
-      {referenceOpen ? (
-        <div
-          className="w-full md:hidden rounded-[20px] border border-dashed border-[color-mix(in srgb, var(--foreground) 18%, transparent)] bg-[color-mix(in srgb, white 94%, var(--background))] px-5 py-6 text-left text-[color-mix(in srgb, var(--foreground) 75%, transparent)]"
-          style={{
-            fontSize: "var(--deck-caption, 1rem)",
-            lineHeight: "var(--deck-line-regular, 1.6)",
-          }}
-        >
-          <p
-            className="uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 70%, transparent)]"
-            style={{
-              fontSize: "var(--deck-eyebrow, 0.75rem)",
-              lineHeight: "var(--deck-line-snug, 1.3)",
-            }}
-          >
-            Facilitation notes
-          </p>
-          <p className="mt-3 whitespace-pre-line">{slideNotes}</p>
-        </div>
-      ) : null}
 
       <nav className="w-full max-w-screen-xl flex flex-wrap items-center justify-center gap-4">
         <div className="flex items-center gap-3">
