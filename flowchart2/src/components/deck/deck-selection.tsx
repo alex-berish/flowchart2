@@ -11,7 +11,7 @@ type DeckOption = {
 const DECK_OPTIONS: DeckOption[] = [
   {
     slug: "orientation",
-    title: "Clean Digital x Chatobserver",
+    title: "Proposal Overview",
     description:
       "Spin-out structure overview covering operator/channel roles, economics, and the execution checklist.",
     href: "/deck",
@@ -35,7 +35,7 @@ const DECK_OPTIONS: DeckOption[] = [
     title: "Employee Perspective",
     description:
       "Internal narrative for the Clean Digital team: what changes, how upside flows, and how to stay aligned.",
-    comingSoon: true,
+    href: "/decks/employee",
   },
 ];
 
@@ -47,7 +47,7 @@ export function DeckSelectionView() {
     <div className="w-full max-w-5xl flex flex-col gap-10">
       <header className="flex flex-col gap-4 text-center md:text-left">
 
-        <h1 className="text-4xl font-semibold tracking-tight">Pick a deck to explore</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">Chatobserver x Clean Digital</h1>
         <p className="text-base text-[color-mix(in srgb, var(--foreground) 78%, transparent)] max-w-2xl mx-auto md:mx-0">
           Start with the Clean Digital x Chatobserver deck to anchor the partnership story, then continue with trustee, board, and employee perspectives.
         </p>

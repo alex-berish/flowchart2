@@ -61,6 +61,13 @@ type HighlightCalloutProps = WithClassName<{
   children: ReactNode;
 }>;
 
+type FaqPageProps = WithClassName<{
+  question: string;
+  questionLabel?: string;
+  answerLabel?: string;
+  children: ReactNode;
+}>;
+
 export function SlideHeader({
   eyebrow,
   kicker,
@@ -299,6 +306,67 @@ export function HighlightCallout({
   );
 }
 
+export function FaqPage({
+  question,
+  questionLabel = "Question",
+  answerLabel = "Answer",
+  className,
+  children,
+}: FaqPageProps) {
+  return (
+    <section
+      className={cx(
+        "flex h-full w-full flex-col px-8 py-6 text-left text-[color-mix(in srgb, var(--foreground) 90%, transparent)]",
+        className,
+      )}
+    >
+      <div className="mx-auto flex min-h-0 flex-1 flex-col justify-center gap-8 py-8" style={{ maxWidth: "64rem" }}>
+        <div className="flex flex-col gap-3">
+          <span
+            className="font-semibold uppercase tracking-[0.25em] text-[color-mix(in srgb, var(--accent) 45%, white)]"
+            style={{
+              fontSize: typeScale.eyebrow,
+              lineHeight: lineHeights.snug,
+            }}
+          >
+            {questionLabel}
+          </span>
+          <h2
+            className="font-semibold text-[var(--foreground)]"
+            style={{
+              fontSize: typeScale.heading,
+              lineHeight: lineHeights.snug,
+            }}
+          >
+            {question}
+          </h2>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <span
+            className="font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--foreground) 65%, transparent)]"
+            style={{
+              fontSize: typeScale.label,
+              lineHeight: lineHeights.snug,
+            }}
+          >
+            {answerLabel}
+          </span>
+          <div
+            className="space-y-4 text-[color-mix(in srgb, var(--foreground) 88%, transparent)]"
+            style={{
+              fontSize: typeScale.body,
+              lineHeight: lineHeights.regular,
+            }}
+          >
+            {children}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const Heading1 = ({ className, children, ...rest }: HeadingProps) => (
   <h1
     className={cx(
@@ -412,6 +480,7 @@ export const defaultMDXComponents = {
   SidebarNote,
   ImageFrame,
   HighlightCallout,
+  FaqPage,
 };
 
 type ComponentValue =

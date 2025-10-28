@@ -15,7 +15,7 @@ type DeckDefinition = {
   slides: SlideManifestEntry[];
 };
 
-export const DECK_IDS = ["orientation", "eot", "board"] as const;
+export const DECK_IDS = ["orientation", "eot", "board", "employee"] as const;
 
 export type DeckId = (typeof DECK_IDS)[number];
 
@@ -185,6 +185,65 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         file: "slide-05.mdx",
         notes:
           "Walk through approve/execute/review phrasing—align with a 10-day close and 30-day check-in.",
+      },
+    ],
+  },
+  employee: {
+    slides: [
+      {
+        id: "faq-01",
+        label: "What is ChatObserver?",
+        file: "slide-01.mdx",
+      },
+      {
+        id: "faq-02",
+        label: "Why isn't this kept inside CD?",
+        file: "slide-02.mdx",
+      },
+      {
+        id: "faq-03",
+        label: "Is this just Alex trying to make money off CD?",
+        file: "slide-03.mdx",
+      },
+      {
+        id: "faq-04",
+        label: "How is this allowed if we're employee-owned?",
+        file: "slide-04.mdx",
+      },
+      {
+        id: "faq-05",
+        label: "Who owns the product company?",
+        file: "slide-05.mdx",
+      },
+      {
+        id: "faq-06",
+        label: "Doesn't Alex being CD staff and trustee create a conflict?",
+        file: "slide-06.mdx",
+      },
+      {
+        id: "faq-07",
+        label: "What does CD get, exactly?",
+        file: "slide-07.mdx",
+      },
+      {
+        id: "faq-08",
+        label: "What counts as a \"CD-sourced\" customer?",
+        file: "slide-08.mdx",
+      },
+      {
+        id: "faq-09",
+        label: "Will this distract people from client work?",
+        file: "slide-09.mdx",
+      },
+      {
+        id: "faq-10",
+        label: "Who handles data privacy and uptime risk?",
+        file: "slide-10.mdx",
+      },
+      {
+        id: "faq-11",
+        label: "What if this gets big?",
+        file: "slide-11.mdx",
       },
     ],
   },
