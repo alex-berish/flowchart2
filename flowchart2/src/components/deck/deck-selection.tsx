@@ -13,28 +13,28 @@ const DECK_OPTIONS: DeckOption[] = [
     slug: "orientation",
     title: "Proposal Overview",
     description:
-      "Spin-out structure overview covering operator/channel roles, economics, and the execution checklist.",
+      "Overview covering roles, economics, and the execution checklist, all subject to discussion.",
     href: "/deck",
   },
   {
     slug: "eot",
     title: "EOT Perspective",
     description:
-      "Tailored walkthrough for the Employee Ownership Trust trustees, focused on beneficiary outcomes and governance.",
+      "The proposal as viewed through the EOT lens, focused on beneficiary outcomes and governance.",
     href: "/decks/eot",
   },
   {
     slug: "board",
     title: "Board Perspective",
     description:
-      "Board-level view covering fiduciary questions, risk posture, and resolution mechanics.",
+      "Board-level view covering fiduciary questions, risk posture, and other mechanics.",
     href: "/decks/board",
   },
   {
     slug: "employee",
     title: "Employee Perspective",
     description:
-      "Internal narrative for the Clean Digital team: what changes, how upside flows, and how to stay aligned.",
+      "FAQs for Clean Digital employees: what to expect, how upside flows, etc.",
     href: "/decks/employee",
   },
 ];
