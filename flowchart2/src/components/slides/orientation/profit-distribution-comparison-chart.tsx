@@ -172,7 +172,7 @@ export function ProfitDistributionComparisonChart() {
         <Line
           type="monotone"
           dataKey="capped"
-          name="CD Scenario — capped (£30k)"
+          name="CD Scenario"
           stroke={chartPalette.secondary}
           strokeWidth={2}
           dot={false}
@@ -184,7 +184,7 @@ export function ProfitDistributionComparisonChart() {
           stroke={chartPalette.secondary}
           strokeDasharray="4 4"
           label={{
-            value: "£30k MRR cap",
+            value: "",
             position: "insideTopRight",
             fill: chartPalette.secondary,
             fontSize: 12,

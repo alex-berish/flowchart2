@@ -46,9 +46,7 @@ export function DeckSelectionView() {
   return (
     <div className="w-full max-w-5xl flex flex-col gap-10">
       <header className="flex flex-col gap-4 text-center md:text-left">
-        <span className="uppercase tracking-[0.3em] text-xs text-[color-mix(in srgb, var(--accent) 40%, white)]">
-          Choose your path
-        </span>
+
         <h1 className="text-4xl font-semibold tracking-tight">Pick a deck to explore</h1>
         <p className="text-base text-[color-mix(in srgb, var(--foreground) 78%, transparent)] max-w-2xl mx-auto md:mx-0">
           Start with the Clean Digital x Chatobserver deck to anchor the partnership story, then continue with trustee, board, and employee perspectives.
