@@ -1440,8 +1440,8 @@ export function ValuationOutlierHighlight() {
         outlier &gt;30× trailing ARR.
       </p>
       <p className="text-sm text-[color-mix(in srgb, var(--foreground) 85%, transparent)]">
-        Treat as peer-stretch, not base case, but it shows the ceiling
-        investors are already paying for GEO/AEO leaders.
+        Treat as peer-stretch, not base case, but it shows the ceiling investors
+        are already paying for GEO/AEO leaders.
       </p>
       <div className="grid gap-2 rounded-2xl border border-[color-mix(in srgb, var(--accent) 25%, transparent)] bg-[color-mix(in srgb, white 96%, transparent)] p-4 text-sm">
         <div className="grid grid-cols-[1.2fr_1fr_1fr_1fr] gap-3 text-xs uppercase tracking-[0.15em] text-[color-mix(in srgb, var(--foreground) 60%, transparent)]">
