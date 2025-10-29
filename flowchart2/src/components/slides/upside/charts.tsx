@@ -1436,11 +1436,11 @@ export function ValuationOutlierHighlight() {
         Peec valuation snapshot
       </p>
       <p className="text-lg font-semibold text-[color-mix(in srgb, var(--foreground) 95%, transparent)]">
-        Press reports cite ~$30M valuation within ~6 months, with €650k ARR — an
+        Press reports cite ~$30M valuation within ~6 months, with €650k ARR, an
         outlier &gt;30× trailing ARR.
       </p>
       <p className="text-sm text-[color-mix(in srgb, var(--foreground) 85%, transparent)]">
-        Treat as peer-stretch, not base case — but it shows the ceiling
+        Treat as peer-stretch, not base case, but it shows the ceiling
         investors are already paying for GEO/AEO leaders.
       </p>
       <div className="grid gap-2 rounded-2xl border border-[color-mix(in srgb, var(--accent) 25%, transparent)] bg-[color-mix(in srgb, white 96%, transparent)] p-4 text-sm">
