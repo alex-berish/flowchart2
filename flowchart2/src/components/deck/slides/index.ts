@@ -367,11 +367,6 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         file: "slide-09-chart.mdx",
       },
       {
-        id: "upside-10",
-        label: "Personal Cheque Multiples",
-        file: "slide-10.mdx",
-      },
-      {
         id: "upside-11",
         label: "Exit Primer",
         file: "slide-11.mdx",
@@ -390,11 +385,6 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         id: "upside-12-chart",
         label: "Preference Illustration",
         file: "slide-12-chart.mdx",
-      },
-      {
-        id: "upside-13",
-        label: "Why It’s Aligned",
-        file: "slide-13.mdx",
       },
       {
         id: "upside-14-latest-rounds",
@@ -425,11 +415,6 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         id: "upside-14-valuation-outlier-chart",
         label: "Valuation Outlier Chart",
         file: "slide-14-valuation-outlier-chart.mdx",
-      },
-      {
-        id: "upside-14-pricing",
-        label: "Pricing Spread",
-        file: "slide-14-pricing.mdx",
       },
       {
         id: "upside-14-geography-chart",
