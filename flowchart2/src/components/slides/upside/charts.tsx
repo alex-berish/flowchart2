@@ -61,7 +61,11 @@ export function PreSeedOwnershipPie() {
           nameKey="name"
           innerRadius={50}
           outerRadius={110}
-          label={({ name, value }) => `${name}: ${value.toFixed(2)}%`}
+          label={({ name, value }) => {
+            const numericValue =
+              typeof value === "number" ? value : Number(value ?? 0);
+            return `${name}: ${numericValue.toFixed(2)}%`;
+          }}
           labelLine={false}
         >
           {data.map((entry, index) => (
@@ -72,10 +76,17 @@ export function PreSeedOwnershipPie() {
           ))}
         </Pie>
         <Tooltip
-          formatter={(value: number, name?: string) => [
-            `${value.toFixed(2)}%`,
-            name,
-          ]}
+          formatter={(rawValue, rawName) => {
+            const numericValue =
+              typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
+            const label =
+              typeof rawName === "string"
+                ? rawName
+                : rawName != null
+                  ? String(rawName)
+                  : "";
+            return [`${numericValue.toFixed(2)}%`, label];
+          }}
           wrapperStyle={{ outline: "none" }}
         />
       </PieChart>
@@ -201,10 +212,19 @@ export function ValuationToRevenueChart() {
           stroke={chartPalette.mutedAxis}
         />
         <Tooltip
-          formatter={(value: number, name?: string) => [
-            `£${value.toFixed(3)}m`,
-            name === "arr" ? "ARR" : "MRR",
-          ]}
+          formatter={(rawValue, rawName) => {
+            const numericValue =
+              typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
+            const label =
+              rawName === "arr"
+                ? "ARR"
+                : rawName === "mrr"
+                  ? "MRR"
+                  : typeof rawName === "string"
+                    ? rawName
+                    : "";
+            return [`£${numericValue.toFixed(3)}m`, label];
+          }}
           wrapperStyle={{ outline: "none" }}
         />
         <Legend verticalAlign="bottom" height={36} />
@@ -252,10 +272,17 @@ export function CDEquityProceedsChart() {
           stroke={chartPalette.mutedAxis}
         />
         <Tooltip
-          formatter={(value: number, name?: string) => [
-            currencyFormatter.format(Number(value) * 1_000_000),
-            name ?? "",
-          ]}
+          formatter={(rawValue, rawName) => {
+            const numericValue =
+              typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
+            const label =
+              typeof rawName === "string"
+                ? rawName
+                : rawName != null
+                  ? String(rawName)
+                  : "";
+            return [currencyFormatter.format(numericValue * 1_000_000), label];
+          }}
           wrapperStyle={{ outline: "none" }}
         />
         <Legend verticalAlign="bottom" height={36} />
@@ -303,10 +330,17 @@ export function CDEquityMultiplesChart() {
           stroke={chartPalette.mutedAxis}
         />
         <Tooltip
-          formatter={(value: number, name?: string) => [
-            multipleFormatter(Number(value)),
-            name ?? "",
-          ]}
+          formatter={(rawValue, rawName) => {
+            const numericValue =
+              typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
+            const label =
+              typeof rawName === "string"
+                ? rawName
+                : rawName != null
+                  ? String(rawName)
+                  : "";
+            return [multipleFormatter(numericValue), label];
+          }}
           wrapperStyle={{ outline: "none" }}
         />
         <Legend verticalAlign="bottom" height={36} />
@@ -354,10 +388,17 @@ export function PersonalEquityProceedsChart() {
           stroke={chartPalette.mutedAxis}
         />
         <Tooltip
-          formatter={(value: number, name?: string) => [
-            currencyFormatter.format(Number(value) * 1_000_000),
-            name ?? "",
-          ]}
+          formatter={(rawValue, rawName) => {
+            const numericValue =
+              typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
+            const label =
+              typeof rawName === "string"
+                ? rawName
+                : rawName != null
+                  ? String(rawName)
+                  : "";
+            return [currencyFormatter.format(numericValue * 1_000_000), label];
+          }}
           wrapperStyle={{ outline: "none" }}
         />
         <Legend verticalAlign="bottom" height={36} />
@@ -405,10 +446,17 @@ export function PersonalMultiplesChart() {
           stroke={chartPalette.mutedAxis}
         />
         <Tooltip
-          formatter={(value: number, name?: string) => [
-            multipleFormatter(Number(value)),
-            name ?? "",
-          ]}
+          formatter={(rawValue, rawName) => {
+            const numericValue =
+              typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
+            const label =
+              typeof rawName === "string"
+                ? rawName
+                : rawName != null
+                  ? String(rawName)
+                  : "";
+            return [multipleFormatter(numericValue), label];
+          }}
           wrapperStyle={{ outline: "none" }}
         />
         <Legend verticalAlign="bottom" height={36} />
@@ -1285,16 +1333,18 @@ export function LatestRoundsBarChart() {
           stroke={chartPalette.mutedAxis}
         />
         <Tooltip
-          formatter={(
-            value: number,
-            _name?: string,
-            entry?: { payload?: (typeof latestRoundBars)[number] },
-          ) => [
-            entry?.payload
-              ? `${entry.payload.display}`
-              : `$${value.toFixed(1)}M`,
-            entry?.payload ? entry.payload.label : "Latest round",
-          ]}
+          formatter={(rawValue, _name, entry) => {
+            const payload = (
+              entry as { payload?: (typeof latestRoundBars)[number] }
+            )?.payload;
+            const numericValue =
+              typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
+            const display = payload
+              ? `${payload.display}`
+              : `$${numericValue.toFixed(1)}M`;
+            const label = payload ? payload.label : "Latest round";
+            return [display, label];
+          }}
           wrapperStyle={{ outline: "none" }}
         />
         <Legend
@@ -1487,11 +1537,14 @@ export function GeographyFundingColumns() {
           stroke={chartPalette.mutedAxis}
         />
         <Tooltip
-          formatter={(
-            value: number,
-            _name?: string,
-            entry?: { payload?: (typeof geographyData)[number] },
-          ) => [`${value} disclosed rounds`, entry?.payload?.label ?? ""]}
+          formatter={(rawValue, _name, entry) => {
+            const payload = (
+              entry as { payload?: (typeof geographyData)[number] }
+            )?.payload;
+            const numericValue =
+              typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
+            return [`${numericValue} disclosed rounds`, payload?.label ?? ""];
+          }}
           wrapperStyle={{ outline: "none" }}
         />
         <Legend verticalAlign="bottom" height={32} />

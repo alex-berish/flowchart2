@@ -21,16 +21,16 @@ export function ChartFrame({
 }: ChartFrameProps) {
   const isMinimal = variant === "minimal";
 
+  const figureBase = isMinimal
+    ? "w-full max-w-4xl mx-auto flex flex-col gap-4 rounded-[20px] bg-transparent p-0"
+    : "w-full max-w-4xl mx-auto flex flex-col gap-4 rounded-[28px] border border-[color-mix(in srgb, var(--foreground) 20%, transparent)] bg-[color-mix(in srgb, white 95%, var(--background))] p-6";
+
+  const frameBase = isMinimal
+    ? "w-full flex min-h-[220px] md:min-h-[280px] items-stretch justify-center rounded-[20px] bg-[color-mix(in srgb, white 96%, var(--background))] p-4"
+    : "w-full flex h-[260px] sm:h-[320px] items-center justify-center";
+
   return (
-    <figure
-      className={cx(
-        "w-full max-w-4xl mx-auto flex flex-col gap-4",
-        isMinimal
-          ? "rounded-[20px] bg-transparent p-0"
-          : "rounded-[28px] border border-[color-mix(in srgb, var(--foreground) 20%, transparent)] bg-[color-mix(in srgb, white 95%, var(--background))] p-6",
-        className,
-      )}
-    >
+    <figure className={cx(figureBase, className)}>
       {(title || subtitle) && (
         <header className="flex flex-col gap-1">
           {title ? (
@@ -58,14 +58,7 @@ export function ChartFrame({
         </header>
       )}
       <div className="w-full">
-        <div
-          className={cx(
-            "w-full flex",
-            isMinimal
-              ? "min-h-[220px] md:min-h-[280px] items-stretch justify-center rounded-[20px] bg-[color-mix(in srgb, white 96%, var(--background))] p-4"
-              : "h-[260px] sm:h-[320px] items-center justify-center",
-          )}
-        >
+        <div className={frameBase}>
           <div className="w-full h-full">{children}</div>
         </div>
       </div>

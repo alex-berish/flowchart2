@@ -445,8 +445,8 @@ const Paragraph = ({
   className,
   children,
   ...rest
-}: WithClassName<ComponentProps<"p">>) => (
-  <p
+}: WithClassName<ComponentProps<"div">>) => (
+  <div
     className={cx(
       "text-[color-mix(in srgb, var(--foreground) 88%, transparent)]",
       className,
@@ -458,7 +458,7 @@ const Paragraph = ({
     {...rest}
   >
     {children}
-  </p>
+  </div>
 );
 
 const List = ({
