@@ -1,9 +1,44 @@
-import type { ComponentProps, CSSProperties, ReactElement, ReactNode } from "react";
+import type {
+  ComponentProps,
+  CSSProperties,
+  ReactElement,
+  ReactNode,
+} from "react";
 import { Children, cloneElement, isValidElement } from "react";
 
 import { LogoImage } from "@/components/media/logo-image";
 import { FundingMomentumChart } from "@/components/slides/orientation/funding-momentum-chart";
 import { ProfitDistributionComparisonChart } from "@/components/slides/orientation/profit-distribution-comparison-chart";
+import {
+  BoardMomentumConclusion,
+  CashEquityVenn,
+  CDEquityMultiplesChart,
+  CDEquityProceedsChart,
+  ChannelEquitySplitPanel,
+  DilutionScenarioPies,
+  FundingDataAppendixTable,
+  FundingMomentumTimeline,
+  FundingVelocityLadder,
+  GeographyFundingColumns,
+  InstrumentsComparisonTable,
+  InvestorLeadTable,
+  LatestRoundsBarChart,
+  LiquidationPreferenceIllustration,
+  PersonalEquityProceedsChart,
+  PersonalMultiplesChart,
+  PreSeedOwnershipPie,
+  PricingSpreadCards,
+  UpsideFundingTimeline,
+  ValuationMultipleMatrix,
+  ValuationOutlierHighlight,
+  ValuationToRevenueChart,
+  VentureCashFlowWaterfall,
+  VentureRoundStaircase,
+  WarrantContributionMatrix,
+  WarrantTermsSnapshot,
+  WarrantTriggerTimeline,
+  WarrantUnitsExample,
+} from "@/components/slides/upside/charts";
 
 import { BarChartBlock, LineChartBlock } from "./chart-blocks";
 import { ChartFrame } from "./chart-frame";
@@ -320,7 +355,10 @@ export function FaqPage({
         className,
       )}
     >
-      <div className="mx-auto flex min-h-0 flex-1 flex-col justify-center gap-8 py-8" style={{ maxWidth: "64rem" }}>
+      <div
+        className="mx-auto flex min-h-0 flex-1 flex-col justify-center gap-8 py-8"
+        style={{ maxWidth: "64rem" }}
+      >
         <div className="flex flex-col gap-3">
           <span
             className="font-semibold uppercase tracking-[0.25em] text-[color-mix(in srgb, var(--accent) 45%, white)]"
@@ -471,6 +509,34 @@ export const defaultMDXComponents = {
   LineChartBlock,
   FundingMomentumChart,
   ProfitDistributionComparisonChart,
+  ValuationToRevenueChart,
+  ValuationMultipleMatrix,
+  PreSeedOwnershipPie,
+  DilutionScenarioPies,
+  UpsideFundingTimeline,
+  FundingMomentumTimeline,
+  LatestRoundsBarChart,
+  FundingVelocityLadder,
+  InvestorLeadTable,
+  ValuationOutlierHighlight,
+  PricingSpreadCards,
+  GeographyFundingColumns,
+  BoardMomentumConclusion,
+  FundingDataAppendixTable,
+  CDEquityProceedsChart,
+  CDEquityMultiplesChart,
+  PersonalEquityProceedsChart,
+  PersonalMultiplesChart,
+  VentureCashFlowWaterfall,
+  ChannelEquitySplitPanel,
+  VentureRoundStaircase,
+  InstrumentsComparisonTable,
+  CashEquityVenn,
+  LiquidationPreferenceIllustration,
+  WarrantTriggerTimeline,
+  WarrantTermsSnapshot,
+  WarrantContributionMatrix,
+  WarrantUnitsExample,
   LogoImage,
   SlideHeader,
   SlideSubhead,

@@ -17,6 +17,13 @@ const DECK_OPTIONS: DeckOption[] = [
     href: "/deck",
   },
   {
+    slug: "upside",
+    title: "The Upside",
+    description:
+      "Venture math for Clean Digital: how a small cheque plus warrant compounds alongside the channel cash.",
+    href: "/decks/upside",
+  },
+  {
     slug: "eot",
     title: "EOT Perspective",
     description:
@@ -41,15 +48,20 @@ const DECK_OPTIONS: DeckOption[] = [
 
 export function DeckSelectionView() {
   const primaryDeck = DECK_OPTIONS.find((deck) => deck.slug === "orientation");
-  const secondaryDecks = DECK_OPTIONS.filter((deck) => deck.slug !== "orientation");
+  const secondaryDecks = DECK_OPTIONS.filter(
+    (deck) => deck.slug !== "orientation",
+  );
 
   return (
     <div className="w-full max-w-5xl flex flex-col gap-10">
       <header className="flex flex-col gap-4 text-center md:text-left">
-
-        <h1 className="text-4xl font-semibold tracking-tight">Chatobserver x Clean Digital</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">
+          Chatobserver x Clean Digital
+        </h1>
         <p className="text-base text-[color-mix(in srgb, var(--foreground) 78%, transparent)] max-w-2xl mx-auto md:mx-0">
-          Start with the Proposal Overview deck to anchor the idea, then continue with EOT, board, and employee decks. Note that everything is a proposal subject to discussion and refinement.
+          Start with the Proposal Overview deck to anchor the idea, then
+          continue with EOT, board, and employee decks. Note that everything is
+          a proposal subject to discussion and refinement.
         </p>
       </header>
 
@@ -66,7 +78,9 @@ export function DeckSelectionView() {
                 <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[color-mix(in srgb, var(--accent) 55%, white)]">
                   Start here
                 </div>
-                <h2 className="text-2xl font-semibold tracking-tight">{primaryDeck.title}</h2>
+                <h2 className="text-2xl font-semibold tracking-tight">
+                  {primaryDeck.title}
+                </h2>
               </div>
               <span className="flex h-9 items-center rounded-full bg-[var(--accent)] px-4 text-xs font-semibold uppercase tracking-[0.3em] text-white">
                 Launch deck →
@@ -80,10 +94,13 @@ export function DeckSelectionView() {
 
         {secondaryDecks.map((deck) => {
           const isDisabled = !deck.href;
+          const isUpside = deck.slug === "upside";
           const content = (
             <>
               <div className="flex items-start justify-between gap-3">
-                <h2 className="text-xl font-semibold tracking-tight">{deck.title}</h2>
+                <h2 className="text-xl font-semibold tracking-tight">
+                  {deck.title}
+                </h2>
                 {deck.comingSoon ? (
                   <span className="text-xs uppercase tracking-[0.25em] text-[color-mix(in srgb, var(--foreground) 55%, transparent)]">
                     Coming soon
@@ -94,10 +111,17 @@ export function DeckSelectionView() {
                 {deck.description}
               </p>
               {!isDisabled ? (
-                <span className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)]">
-                  Open deck
-                  <span aria-hidden>→</span>
-                </span>
+                isUpside ? (
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#fbbf24] px-3 py-1.5 text-sm font-semibold text-[#3f2f00] shadow-sm">
+                    Open deck
+                    <span aria-hidden>→</span>
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)]">
+                    Open deck
+                    <span aria-hidden>→</span>
+                  </span>
+                )
               ) : (
                 <span className="inline-flex items-center gap-2 text-sm font-medium text-[color-mix(in srgb, var(--foreground) 65%, transparent)]">
                   Preparing materials
@@ -107,14 +131,19 @@ export function DeckSelectionView() {
           );
 
           const baseClasses =
-            "rounded-3xl border border-[color-mix(in srgb, var(--foreground) 12%, transparent)] bg-[color-mix(in srgb, white 94%, var(--background))] p-6 flex flex-col gap-4 transition-transform";
+            "rounded-3xl border bg-[color-mix(in srgb, white 94%, var(--background))] p-6 flex flex-col gap-4 transition-transform";
+          const cardClasses = isUpside
+            ? `${baseClasses} border-[#fbbf24] bg-[color-mix(in srgb, #fbbf24 12%, var(--background))] shadow-[0_18px_40px_-15px_rgb(251_191_36/0.55)]`
+            : `${baseClasses} border-[color-mix(in srgb, var(--foreground) 12%, transparent)]`;
+          const focusOutlineClass = isUpside
+            ? "focus-visible:outline-[#fbbf24]"
+            : "focus-visible:outline-[var(--accent)]";
 
           if (isDisabled) {
             return (
               <div
                 key={deck.slug}
-                className={`${baseClasses} opacity-70 cursor-not-allowed`}
-                role="group"
+                className={`${cardClasses} opacity-70 cursor-not-allowed`}
                 aria-disabled="true"
               >
                 {content}
@@ -126,7 +155,7 @@ export function DeckSelectionView() {
             <Link
               key={deck.slug}
               href={deck.href ?? "/decks"}
-              className={`${baseClasses} hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]`}
+              className={`${cardClasses} hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${focusOutlineClass}`}
             >
               {content}
             </Link>

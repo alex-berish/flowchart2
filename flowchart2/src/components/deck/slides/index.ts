@@ -15,7 +15,13 @@ type DeckDefinition = {
   slides: SlideManifestEntry[];
 };
 
-export const DECK_IDS = ["orientation", "eot", "board", "employee"] as const;
+export const DECK_IDS = [
+  "orientation",
+  "eot",
+  "board",
+  "employee",
+  "upside",
+] as const;
 
 export type DeckId = (typeof DECK_IDS)[number];
 
@@ -48,7 +54,8 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         id: "slide-05",
         label: "Parties & Boundaries",
         file: "slide-05.mdx",
-        notes: "Clarify operator vs channel, staffing, and firewall expectations.",
+        notes:
+          "Clarify operator vs channel, staffing, and firewall expectations.",
       },
       {
         id: "slide-06",
@@ -80,8 +87,7 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         id: "slide-11",
         label: "Funding Momentum",
         file: "slide-11.mdx",
-        notes:
-          "Use competitor raises to highlight fresh, investable category.",
+        notes: "Use competitor raises to highlight fresh, investable category.",
       },
       {
         id: "slide-12",
@@ -93,7 +99,8 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         id: "slide-13",
         label: "Papering Checklist",
         file: "slide-14.mdx",
-        notes: "Assignment, channel letter, firewall, outside-hours, conflicts.",
+        notes:
+          "Assignment, channel letter, firewall, outside-hours, conflicts.",
       },
       {
         id: "slide-14",
@@ -227,7 +234,7 @@ const DECKS: Record<DeckId, DeckDefinition> = {
       },
       {
         id: "faq-08",
-        label: "What counts as a \"CD-sourced\" customer?",
+        label: 'What counts as a "CD-sourced" customer?',
         file: "slide-08.mdx",
       },
       {
@@ -247,15 +254,254 @@ const DECKS: Record<DeckId, DeckDefinition> = {
       },
     ],
   },
+  upside: {
+    slides: [
+      {
+        id: "upside-00",
+        label: "Title",
+        file: "slide-00-title.mdx",
+      },
+      {
+        id: "upside-01",
+        label: "Venture Crash Course",
+        file: "slide-01.mdx",
+      },
+      {
+        id: "upside-01-chart",
+        label: "Venture Journey Chart",
+        file: "slide-01-chart.mdx",
+      },
+      {
+        id: "upside-02",
+        label: "Instruments Overview",
+        file: "slide-02.mdx",
+      },
+      {
+        id: "upside-02-chart",
+        label: "Instrument Comparison",
+        file: "slide-02-chart.mdx",
+      },
+      {
+        id: "upside-03",
+        label: "CD Package",
+        file: "slide-03.mdx",
+      },
+      {
+        id: "upside-03-warrant-basics",
+        label: "What a Warrant Is",
+        file: "slide-03-warrant-basics.mdx",
+      },
+      {
+        id: "upside-03-warrant-basics-chart",
+        label: "Warrant Timeline",
+        file: "slide-03-warrant-basics-chart.mdx",
+      },
+      {
+        id: "upside-03-warrant-terms",
+        label: "Warrant Key Terms",
+        file: "slide-03-warrant-terms.mdx",
+      },
+      {
+        id: "upside-03-warrant-terms-chart",
+        label: "Pre/Post Money Snapshot",
+        file: "slide-03-warrant-terms-chart.mdx",
+      },
+      {
+        id: "upside-03-warrant-why",
+        label: "Why CD Gets It",
+        file: "slide-03-warrant-why.mdx",
+      },
+      {
+        id: "upside-03-warrant-why-chart",
+        label: "Contribution vs Return",
+        file: "slide-03-warrant-why-chart.mdx",
+      },
+      {
+        id: "upside-03-warrant-numbers",
+        label: "Warrant Numbers Intuition",
+        file: "slide-03-warrant-numbers.mdx",
+      },
+      {
+        id: "upside-03-warrant-numbers-chart",
+        label: "Units Example",
+        file: "slide-03-warrant-numbers-chart.mdx",
+      },
+      {
+        id: "upside-04",
+        label: "Pre-seed Maths",
+        file: "slide-04.mdx",
+      },
+      {
+        id: "upside-04-chart",
+        label: "Pre-seed Ownership Chart",
+        file: "slide-04-chart.mdx",
+      },
+      {
+        id: "upside-05",
+        label: "Dilution to Exit",
+        file: "slide-05.mdx",
+      },
+      {
+        id: "upside-05-chart",
+        label: "Dilution Scenario Chart",
+        file: "slide-05-chart.mdx",
+      },
+      {
+        id: "upside-06",
+        label: "Valuation ↔ ARR ↔ MRR",
+        file: "slide-06.mdx",
+      },
+      {
+        id: "upside-06-chart",
+        label: "ARR / MRR Matrix",
+        file: "slide-06-chart.mdx",
+      },
+      {
+        id: "upside-07",
+        label: "CD Equity Proceeds",
+        file: "slide-07.mdx",
+      },
+      {
+        id: "upside-07-chart",
+        label: "CD Proceeds Chart",
+        file: "slide-07-chart.mdx",
+      },
+      {
+        id: "upside-09",
+        label: "Personal £5k Proceeds",
+        file: "slide-09.mdx",
+      },
+      {
+        id: "upside-09-chart",
+        label: "Personal Cheque Proceeds Chart",
+        file: "slide-09-chart.mdx",
+      },
+      {
+        id: "upside-10",
+        label: "Personal Cheque Multiples",
+        file: "slide-10.mdx",
+      },
+      {
+        id: "upside-11",
+        label: "Exit Primer",
+        file: "slide-11.mdx",
+      },
+      {
+        id: "upside-11-chart",
+        label: "Funding Timeline",
+        file: "slide-11-chart.mdx",
+      },
+      {
+        id: "upside-12-liquidation",
+        label: "Liquidation Preference",
+        file: "slide-11-liquidation.mdx",
+      },
+      {
+        id: "upside-12-chart",
+        label: "Preference Illustration",
+        file: "slide-12-chart.mdx",
+      },
+      {
+        id: "upside-12",
+        label: "MRR ≠ Cash Out",
+        file: "slide-12.mdx",
+      },
+      {
+        id: "upside-13-chart",
+        label: "Cash Waterfall Chart",
+        file: "slide-13-chart.mdx",
+      },
+      {
+        id: "upside-13",
+        label: "Why It’s Aligned",
+        file: "slide-13.mdx",
+      },
+      {
+        id: "upside-14-chart",
+        label: "Channel vs Equity Panel",
+        file: "slide-14-chart.mdx",
+      },
+      {
+        id: "upside-14-board-cap",
+        label: "Board Chart · Cap Table",
+        file: "slide-14-board-cap.mdx",
+      },
+      {
+        id: "upside-14-board-dilution",
+        label: "Board Chart · Dilution",
+        file: "slide-14-board-dilution.mdx",
+      },
+      {
+        id: "upside-14-board-proceeds",
+        label: "Board Chart · CD Proceeds",
+        file: "slide-14-board-proceeds.mdx",
+      },
+      {
+        id: "upside-14-latest-rounds",
+        label: "Latest Rounds",
+        file: "slide-14-latest-rounds.mdx",
+      },
+      {
+        id: "upside-14-latest-rounds-chart",
+        label: "Latest Rounds Chart",
+        file: "slide-14-latest-rounds-chart.mdx",
+      },
+      {
+        id: "upside-14-velocity",
+        label: "Funding Velocity",
+        file: "slide-14-velocity.mdx",
+      },
+      {
+        id: "upside-14-velocity-chart",
+        label: "Funding Velocity Chart",
+        file: "slide-14-velocity-chart.mdx",
+      },
+      {
+        id: "upside-14-investors",
+        label: "Investor Leads",
+        file: "slide-14-investors.mdx",
+      },
+      {
+        id: "upside-14-investors-chart",
+        label: "Investor Leads Chart",
+        file: "slide-14-investors-chart.mdx",
+      },
+      {
+        id: "upside-14-valuation-outlier",
+        label: "Valuation Outlier",
+        file: "slide-14-valuation-outlier.mdx",
+      },
+      {
+        id: "upside-14-valuation-outlier-chart",
+        label: "Valuation Outlier Chart",
+        file: "slide-14-valuation-outlier-chart.mdx",
+      },
+      {
+        id: "upside-14-pricing",
+        label: "Pricing Spread",
+        file: "slide-14-pricing.mdx",
+      },
+      {
+        id: "upside-14-geography-chart",
+        label: "Geography Chart",
+        file: "slide-14-geography-chart.mdx",
+      },
+      {
+        id: "upside-14-conclusion",
+        label: "Board Conclusion",
+        file: "slide-14-conclusion.mdx",
+      },
+    ],
+  },
 };
 
 export function listDeckIds(): DeckId[] {
   return [...DECK_IDS];
 }
 
-export async function getDeckSlides(deck: DeckId = "orientation"): Promise<
-  DeckSlide[]
-> {
+export async function getDeckSlides(
+  deck: DeckId = "orientation",
+): Promise<DeckSlide[]> {
   const definition = DECKS[deck];
   if (!definition) {
     throw new Error(`Deck not found: ${deck}`);

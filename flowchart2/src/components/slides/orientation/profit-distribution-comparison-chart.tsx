@@ -86,7 +86,12 @@ function CustomTooltip({
   }>;
   label?: number | string;
 }) {
-  if (!active || !payload || payload.length === 0 || typeof label !== "number") {
+  if (
+    !active ||
+    !payload ||
+    payload.length === 0 ||
+    typeof label !== "number"
+  ) {
     return null;
   }
 
@@ -153,7 +158,10 @@ export function ProfitDistributionComparisonChart() {
           tickLine={false}
         />
 
-        <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: "none" }} />
+        <Tooltip
+          content={<CustomTooltip />}
+          wrapperStyle={{ outline: "none" }}
+        />
         <Legend
           verticalAlign="top"
           align="right"

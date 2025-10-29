@@ -67,9 +67,9 @@ export function DeckNavigator({ slides }: DeckNavigatorProps) {
           }}
           aria-live="polite"
         >
-          <div className="flex h-full w-full items-center justify-center p-10">
+          <div className="flex h-full w-full items-center justify-center p-6 md:p-10">
             <div
-              className="w-full h-full flex flex-col items-center justify-center text-center"
+              className="w-full h-full overflow-auto flex flex-col items-center justify-center text-center"
               style={{ maxWidth: SLIDE_WIDTH }}
             >
               <MDXRemote

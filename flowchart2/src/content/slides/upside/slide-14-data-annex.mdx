@@ -1,0 +1,17 @@
+<div className="flex h-full w-full flex-col">
+  <div className="flex flex-1 flex-col gap-8 px-8 py-6 w-full max-w-6xl mx-auto">
+    <SlideHeader eyebrow="Appendix" kicker="Funding data (audit trail)">
+      Source table for board and counsel
+    </SlideHeader>
+
+    <SlideBody className="max-w-5xl">
+      <p className="text-sm text-[color-mix(in srgb, var(--foreground) 80%, transparent)]">
+        Use this table for diligence or to populate board minutes. Amounts shown as reported; EUR values are unconverted.
+      </p>
+    </SlideBody>
+
+    <ChartFrame variant="minimal">
+      <FundingDataAppendixTable />
+    </ChartFrame>
+  </div>
+</div>

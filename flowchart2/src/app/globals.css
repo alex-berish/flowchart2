@@ -18,10 +18,12 @@
   --deck-line-tight: 1.05;
   --deck-line-snug: 1.3;
   --deck-line-regular: 1.6;
-  --font-deck-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --font-deck-mono: "JetBrains Mono", SFMono-Regular, Menlo, Monaco,
-    Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-deck-sans:
+    "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-deck-mono:
+    "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 [data-theme="dark"] {
@@ -63,18 +65,14 @@ body {
   color: var(--foreground);
 }
 
-[data-theme="light"] .chart-tooltip-name,
-[data-theme="dark"] .chart-tooltip-name,
 .chart-tooltip-name {
   color: var(--foreground);
 }
 
-[data-theme="light"] .chart-tooltip-round,
 .chart-tooltip-round {
   color: color-mix(in srgb, var(--foreground) 75%, transparent);
 }
 
-[data-theme="light"] .chart-tooltip-value,
 .chart-tooltip-value {
   color: color-mix(in srgb, var(--foreground) 92%, transparent);
 }

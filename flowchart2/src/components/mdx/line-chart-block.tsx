@@ -1,17 +1,16 @@
 "use client";
 
+import { useMemo } from "react";
 import {
+  CartesianGrid,
+  Legend,
   Line,
   LineChart,
-  CartesianGrid,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
-  Legend,
-  type TooltipProps,
 } from "recharts";
-import { useMemo } from "react";
 
 import { chartPalette, defaultNumberFormatter } from "./utils";
 
@@ -83,26 +82,31 @@ function CustomTooltip({
         minWidth: 220,
       }}
     >
-      <p className="chart-tooltip-date text-sm font-semibold">{formattedDate}</p>
+      <p className="chart-tooltip-date text-sm font-semibold">
+        {formattedDate}
+      </p>
       <ul className="mt-3 space-y-1">
         {payload
           .filter((entry) => entry && entry.value != null)
           .map((entry) => {
             const dataKey = String(entry.dataKey ?? entry.name ?? "");
-            const meta = (entry.payload?.[`${dataKey}__meta`] ?? null) as
-              | LineSeriesDatum
-              | null;
+            const meta = (entry.payload?.[`${dataKey}__meta`] ??
+              null) as LineSeriesDatum | null;
             const roundLabel = meta?.round;
             const roundAmount = meta?.roundAmount;
             return (
               <li key={dataKey} className="flex items-start gap-3 text-sm">
                 <span
                   className="mt-1 h-2 w-2 rounded-full"
-                  style={{ backgroundColor: entry.color ?? chartPalette.primary }}
+                  style={{
+                    backgroundColor: entry.color ?? chartPalette.primary,
+                  }}
                 />
                 <div className="flex-1 space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="chart-tooltip-name font-medium">{dataKey}</span>
+                    <span className="chart-tooltip-name font-medium">
+                      {dataKey}
+                    </span>
                     <span className="chart-tooltip-value ml-auto font-semibold">
                       {formatValue(Number(entry.value))}
                     </span>
@@ -138,7 +142,9 @@ export function LineChartBlock({
   const chartData = useMemo(() => {
     const dates = new Set<string>();
     series.forEach((line) => {
-      line.data.forEach(({ date }) => dates.add(date));
+      line.data.forEach(({ date }) => {
+        dates.add(date);
+      });
     });
 
     const sortedDates = Array.from(dates).sort();
@@ -161,7 +167,10 @@ export function LineChartBlock({
   return (
     <div className={className}>
       <ResponsiveContainer width="100%" height={height}>
-        <LineChart data={chartData} margin={{ top: 16, right: 24, bottom: 8, left: 16 }}>
+        <LineChart
+          data={chartData}
+          margin={{ top: 16, right: 24, bottom: 8, left: 16 }}
+        >
           <CartesianGrid strokeDasharray="3 3" stroke={chartPalette.grid} />
           <XAxis
             dataKey="date"
@@ -186,13 +195,19 @@ export function LineChartBlock({
             }
             wrapperStyle={{ outline: "none" }}
           />
-          <Legend verticalAlign="top" height={36} wrapperStyle={{ fontSize: "0.9rem" }} />
+          <Legend
+            verticalAlign="top"
+            height={36}
+            wrapperStyle={{ fontSize: "0.9rem" }}
+          />
           {series.map((line, index) => (
             <Line
               key={line.name}
               type="monotone"
               dataKey={line.name}
-              stroke={line.color ?? COLOR_SEQUENCE[index % COLOR_SEQUENCE.length]}
+              stroke={
+                line.color ?? COLOR_SEQUENCE[index % COLOR_SEQUENCE.length]
+              }
               strokeWidth={2}
               dot={false}
               connectNulls
