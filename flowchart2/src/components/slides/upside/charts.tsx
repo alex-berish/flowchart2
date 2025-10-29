@@ -1,5 +1,7 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 import {
   Bar,
   BarChart,
@@ -936,7 +938,7 @@ export function WarrantTermsSnapshot() {
 }
 
 export function WarrantContributionMatrix() {
-  const rows = [
+  const rows: Array<{ left: string; points: ReactNode[] }> = [
     {
       left: "CD contributes",
       points: [
@@ -950,7 +952,13 @@ export function WarrantContributionMatrix() {
       points: [
         "Perpetual channel profit on CD-sourced accounts",
         "2% success-only warrant at first priced round",
-        "Right to participate in future rounds (e.g. 10% stake)",
+        <>
+          Right to participate in future rounds (
+          <span className="rounded bg-[#fde047] text-[color-mix(in srgb, var(--foreground) 95%, black)]">
+            e.g. 10% stake
+          </span>
+          )
+        </>,
       ],
     },
   ];
@@ -966,8 +974,8 @@ export function WarrantContributionMatrix() {
             {row.left}
           </p>
           <ul className="list-disc pl-4 text-sm text-[color-mix(in srgb, var(--foreground) 80%, transparent)]">
-            {row.points.map((point) => (
-              <li key={`${row.left}-${point}`}>{point}</li>
+            {row.points.map((point, index) => (
+              <li key={`${row.left}-${index}`}>{point}</li>
             ))}
           </ul>
         </div>

@@ -317,16 +317,6 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         file: "slide-03-warrant-why-chart.mdx",
       },
       {
-        id: "upside-03-warrant-numbers",
-        label: "Warrant Numbers Intuition",
-        file: "slide-03-warrant-numbers.mdx",
-      },
-      {
-        id: "upside-03-warrant-numbers-chart",
-        label: "Units Example",
-        file: "slide-03-warrant-numbers-chart.mdx",
-      },
-      {
         id: "upside-04",
         label: "Pre-seed Maths",
         file: "slide-04.mdx",
@@ -402,39 +392,9 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         file: "slide-12-chart.mdx",
       },
       {
-        id: "upside-12",
-        label: "MRR ≠ Cash Out",
-        file: "slide-12.mdx",
-      },
-      {
-        id: "upside-13-chart",
-        label: "Cash Waterfall Chart",
-        file: "slide-13-chart.mdx",
-      },
-      {
         id: "upside-13",
         label: "Why It’s Aligned",
         file: "slide-13.mdx",
-      },
-      {
-        id: "upside-14-chart",
-        label: "Channel vs Equity Panel",
-        file: "slide-14-chart.mdx",
-      },
-      {
-        id: "upside-14-board-cap",
-        label: "Board Chart · Cap Table",
-        file: "slide-14-board-cap.mdx",
-      },
-      {
-        id: "upside-14-board-dilution",
-        label: "Board Chart · Dilution",
-        file: "slide-14-board-dilution.mdx",
-      },
-      {
-        id: "upside-14-board-proceeds",
-        label: "Board Chart · CD Proceeds",
-        file: "slide-14-board-proceeds.mdx",
       },
       {
         id: "upside-14-latest-rounds",
@@ -445,16 +405,6 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         id: "upside-14-latest-rounds-chart",
         label: "Latest Rounds Chart",
         file: "slide-14-latest-rounds-chart.mdx",
-      },
-      {
-        id: "upside-14-velocity",
-        label: "Funding Velocity",
-        file: "slide-14-velocity.mdx",
-      },
-      {
-        id: "upside-14-velocity-chart",
-        label: "Funding Velocity Chart",
-        file: "slide-14-velocity-chart.mdx",
       },
       {
         id: "upside-14-investors",
