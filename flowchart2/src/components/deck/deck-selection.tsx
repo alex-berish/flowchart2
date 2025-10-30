@@ -44,6 +44,13 @@ const DECK_OPTIONS: DeckOption[] = [
       "FAQs for Clean Digital employees: what to expect, how upside flows, etc.",
     href: "/decks/employee",
   },
+  {
+    slug: "next-steps",
+    title: "Next Steps",
+    description:
+      "Action checklist covering approvals, company formation, paperwork, and seed contingency.",
+    href: "/decks/next-steps",
+  },
 ];
 
 export function DeckSelectionView() {

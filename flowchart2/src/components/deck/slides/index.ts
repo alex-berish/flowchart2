@@ -21,6 +21,7 @@ export const DECK_IDS = [
   "board",
   "employee",
   "upside",
+  "next-steps",
 ] as const;
 
 export type DeckId = (typeof DECK_IDS)[number];
@@ -251,6 +252,23 @@ const DECKS: Record<DeckId, DeckDefinition> = {
         id: "faq-11",
         label: "What if this gets big?",
         file: "slide-11.mdx",
+      },
+    ],
+  },
+  "next-steps": {
+    slides: [
+      {
+        id: "next-steps-01",
+        label: "Agree in Principle",
+        file: "slide-01.mdx",
+      },
+      { id: "next-steps-02", label: "Form NewCo", file: "slide-02.mdx" },
+      { id: "next-steps-03", label: "Sign the Docs", file: "slide-03.mdx" },
+      { id: "next-steps-04", label: "Build + Report", file: "slide-04.mdx" },
+      {
+        id: "next-steps-05",
+        label: "Seed Round Scenario",
+        file: "slide-05.mdx",
       },
     ],
   },
